@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodify - Your Music, Your Mood</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="bg-blur" class="bg-blur"></div>
+    <div class="overlay"></div>
+
+    <div class="app-layout">
+        <header class="navbar">
+            <div class="brand">
+                <img src="logo.png" alt="Moodify">
+                <span>Moodify</span>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li onclick="showQuotes('Home')">Home</li>
+                    <li onclick="showQuotes('Explore')">Explore</li>
+                    <li onclick="showQuotes('Moods')">Moods</li>
+                    <li onclick="showLibrary()">Library</li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <section id="home-hero" class="home-hero-container">
+                <div class="top-quote-display">
+                    <p id="top-quote-text">"Where words fail, music speaks."</p>
+                </div>
+                <div class="poetic-center">
+                    <h1 class="poetic-title">Let's dive into the world of music</h1>
+                    <button id="dive-in-btn" class="pill active">Start the Journey</button>
+                </div>
+            </section>
+
+            <section class="playlist-section" id="playlist-section" style="display: none;">
+                <div class="mood-filter" id="moodFilterContainer">
+                    <button class="pill active" onclick="filterMood('all', this)">All</button>
+                    <button class="pill" onclick="filterMood('chill', this)">Chill</button>
+                    <button class="pill" onclick="filterMood('energetic', this)">Energetic</button>
+                    <button class="pill" onclick="filterMood('romantic', this)">Romantic</button>
+                    <button class="pill" onclick="filterMood('focus', this)">Focus</button>
+                </div>
+
+                <h1 class="list-heading" id="listHeading">Taal: Your Playlist</h1>
+
+                <div id="quotes-view" style="display: none;">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <h2 id="quote-text"></h2>
+                    <p id="quote-context"></p>
+                </div>
+
+                <div class="song-items-container" id="songItemsContainer">
+                    <div class="songItem" id="0" data-mood="energetic">
+                        <div class="track-info"><img src="covers/deva.jpg"><span>Deva Shree Ganesha</span></div>
+                        <i class="far songItemPlay fa-circle-play"></i>
+                    </div>
+                    <div class="songItem" id="1" data-mood="focus">
+                        <div class="track-info"><img src="covers/achutam.jpg"><span>Achutam Keshavam</span></div>
+                        <i class="far songItemPlay fa-circle-play"></i>
+                    </div>
+                    <div class="songItem" id="2" data-mood="energetic">
+                        <div class="track-info"><img src="covers/illegal.jpg"><span>Illegal Weapon</span></div>
+                        <i class="far songItemPlay fa-circle-play"></i>
+                    </div>
+                    <div class="songItem" id="3" data-mood="energetic">
+                        <div class="track-info"><img src="covers/chogada.jpg"><span>Chogada</span></div>
+                        <i class="far songItemPlay fa-circle-play"></i>
+                    </div>
+                    <div class="songItem" id="4" data-mood="energetic">
+                        <div class="track-info"><img src="covers/Shambhu.jpg"><span>Shambhu Sutaya</span></div>
+                        <i class="far songItemPlay fa-circle-play"></i>
+                    </div>
+                    <div class="songItem" id="5" data-mood="energetic">
+                        <div class="track-info"><img src="covers/sadda.jpg"><span>Sadda Dil Vi Tu</span></div>
+                        <i class="far songItemPlay fa-circle-play"></i>
+                    </div>
+                    <div class="songItem" id="6" data-mood="chill">
+                        <div class="track-info"><img src="covers/chidiya.jpg"><span>Chidiya</span></div>
+                        <i class="far songItemPlay fa-circle-play"></i>
+                    </div>
+                    <div class="songItem" id="7" data-mood="romantic">
+                        <div class="track-info"><img src="covers/tuhihai.jpg"><span>Tu Hi Hai Aashiqui</span></div>
+                        <i class="far songItemPlay fa-circle-play"></i>
+                    </div>
+                    <div class="songItem" id="8" data-mood="romantic">
+                        <div class="track-info"><img src="covers/premho.jpg"><span>Tum Prem Ho</span></div>
+                        <i class="far songItemPlay fa-circle-play"></i>
+                    </div>
+                    <div class="songItem" id="9" data-mood="romantic">
+                        <div class="track-info"><img src="covers/tumsaath.jpg"><span>Agar Tum Saath Ho</span></div>
+                        <i class="far songItemPlay fa-circle-play"></i>
+                    </div>
+                    <div class="songItem" id="10" data-mood="chill">
+                        <div class="track-info"><img src="covers/dum.jpg"><span>Dum Dum</span></div>
+                        <i class="far songItemPlay fa-circle-play"></i>
+                    </div>
+                    <div class="songItem" id="11" data-mood="focus">
+                        <div class="track-info"><img src="covers/stotram.jpg"><span>Shiv Stotram</span></div>
+                        <i class="far songItemPlay fa-circle-play"></i>
+                    </div>
+                </div>
+            </section>
+
+            <section class="hero-section" id="hero-player-art" style="display: none;">
+                <div class="hero-card">
+                    <img src="covers/deva.jpg" id="hero-art">
+                    <div class="hero-meta">
+                        <h2 id="masterSongName">Deva Shree Ganesha</h2>
+                        <p>Now Streaming on Moodify</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="player-bar">
+            <div class="progress-wrap">
+                <input type="range" id="myProgressBar" min="0" value="0" max="100">
+            </div>
+            <div class="controls-main">
+                <div class="visualizer-box"><img src="music.gif" id="gif"></div>
+                <div class="icon-set">
+                    <i class="fas fa-step-backward" id="previous"></i>
+                    <i class="far fa-circle-play" id="masterPlay"></i>
+                    <i class="fas fa-step-forward" id="next"></i>
+                </div>
+                <div class="volume-box">
+                    <i class="fas fa-volume-up" id="volumeIcon" style="cursor: pointer;"></i>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.7">
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://kit.fontawesome.com/0684ae6080.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

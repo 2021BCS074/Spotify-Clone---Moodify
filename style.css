@@ -1,0 +1,73 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; color: white; font-family: 'Inter', sans-serif; overflow: hidden; height: 100vh; }
+
+/* Background and Overlay */
+.bg-blur {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+    filter: blur(80px) brightness(0.4); z-index: -2;
+    transition: background-image 0.8s ease-in-out;
+}
+.overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, transparent, #000 95%); 
+    z-index: -1;
+    transition: background 1.5s ease-in-out;
+}
+
+.app-layout { display: flex; flex-direction: column; height: 100vh; }
+
+/* Navbar */
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: rgba(0,0,0,0.5); z-index: 10; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.4rem; }
+.brand img { width: 35px; }
+.nav-links { display: flex; list-style: none; gap: 25px; }
+.nav-links li { cursor: pointer; opacity: 0.7; transition: 0.3s; }
+.nav-links li:hover { opacity: 1; color: #00f2ff; }
+
+/* Poetic Home Hero */
+.home-hero-container {
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+}
+.top-quote-display { position: absolute; top: 120px; font-style: italic; opacity: 0.7; letter-spacing: 1px; }
+.poetic-title {
+    font-family: 'Dancing Script', cursive; font-size: 4.5rem;
+    margin-bottom: 30px; color: #00f2ff;
+    text-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+}
+
+/* Main Layout */
+.main-content { display: flex; flex: 1; padding: 20px 40px; gap: 40px; overflow: hidden; }
+.playlist-section { flex: 1.5; display: flex; flex-direction: column; }
+.hero-section { flex: 1; display: flex; justify-content: center; align-items: center; }
+
+/* Filters & Items */
+.mood-filter { display: flex; gap: 10px; margin-bottom: 20px; }
+.pill { background: #222; border: none; color: #fff; padding: 8px 18px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+.pill.active { background: #00f2ff; color: #000; font-weight: bold; }
+.pill:hover { transform: scale(1.05); }
+
+.song-items-container { overflow-y: auto; flex: 1; padding-right: 10px; }
+.songItem { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 12px 20px; border-radius: 12px; margin-bottom: 8px; cursor: pointer; }
+.songItem:hover { background: rgba(255,255,255,0.1); }
+.track-info { display: flex; align-items: center; gap: 15px; }
+.track-info img { width: 45px; height: 45px; border-radius: 6px; }
+
+/* Quotes View */
+#quotes-view { padding: 40px; text-align: center; background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid rgba(0,242,255,0.1); }
+.quote-icon { font-size: 2rem; color: #00f2ff; margin-bottom: 20px; }
+
+/* Player */
+#hero-art { width: 380px; height: 380px; border-radius: 20px; box-shadow: 0 10px 50px rgba(0,0,0,0.8); object-fit: cover; }
+.player-bar { height: 120px; background: rgba(18,18,18,0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.progress-wrap { width: 90%; }
+#myProgressBar { width: 100%; accent-color: #00f2ff; cursor: pointer; }
+.controls-main { display: flex; justify-content: space-between; width: 90%; align-items: center; margin-top: 10px; }
+.icon-set i { font-size: 1.8rem; margin: 0 20px; cursor: pointer; transition: 0.2s; }
+.icon-set i:hover { color: #00f2ff; transform: scale(1.1); }
+
+/* Volume UI */
+.volume-box { display: flex; align-items: center; gap: 12px; width: 150px; justify-content: flex-end; }
+#volumeSlider { width: 80px; accent-color: #00f2ff; cursor: pointer; }
+#gif { width: 40px; opacity: 0; transition: 0.3s; }
